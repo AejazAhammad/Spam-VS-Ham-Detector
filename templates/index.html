@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spam Message Detector</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#f2f2f2;
+        }
+
+        .container{
+
+            width:600px;
+            margin:60px auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px gray;
+
+        }
+
+        h2{
+
+            text-align:center;
+        }
+
+        textarea{
+
+            width:100%;
+            height:180px;
+            padding:10px;
+            font-size:16px;
+            border-radius:5px;
+            resize:none;
+        }
+
+        input[type=submit]{
+
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#4CAF50;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:18px;
+            cursor:pointer;
+
+        }
+
+        input[type=submit]:hover{
+
+            background:#45a049;
+
+        }
+
+        .result{
+
+            margin-top:20px;
+            text-align:center;
+            font-size:22px;
+            color:blue;
+            font-weight:bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Spam vs Ham Message Classifier</h2>
+
+    <form action="/predict" method="POST">
+
+        <textarea
+            name="message"
+            placeholder="Type your SMS or Email here..."
+            required>{{ entered_text }}</textarea>
+
+        <input type="submit" value="Predict">
+
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
